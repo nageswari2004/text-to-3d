@@ -57,13 +57,3 @@ for i, latent in enumerate(latents):
     images = decode_latent_images(xm, latent, cameras, rendering_mode=render_mode)
     display(gif_widget(images))
 
-# Example of saving the latents as meshes.
-from shap_e.util.notebooks import decode_latent_mesh
-
-for i, latent in enumerate(latents):
-    t = decode_latent_mesh(xm, latent).tri_mesh()
-    with open(f'example_mesh_{i}.ply', 'wb') as f:
-        t.write_ply(f)
-    with open(f'example_mesh_{i}.obj', 'w') as f:
-        t.write_obj(f)
-
